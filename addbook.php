@@ -31,9 +31,9 @@ if(isset($_POST['isbn'])&&isset($_POST['title'])&&isset($_POST['author'])&&isset
 	$query="INSERT INTO books VALUES ('".$isbn."','".$author."','".$title."',".$catid.",".$price.",'".$description."')";
 	$result=$conn->query($query);
 	if($result){
-		echo "添加图书".$title."成功";
+		echo "添加图书《".$title."》成功";
 	}else{
-		echo "添加图书".$title."失败";
+		echo "添加图书《".$title."》失败";
 	}
 }else{
 	echo "请填写完整";
