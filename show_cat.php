@@ -3,8 +3,8 @@ include_once('db_fns.php');
 include_once('output_fns.php');
 session_start();
 do_html_header('books');
-$cat_id = $_GET['catid'];
 $conn=db_connect();
+$cat_id = check_input($conn,$_GET['catid']);
 $query='select isbn,author,title,price,description from books where catid='.$cat_id;
 $result=$conn->query($query);
 if($result->num_rows>0){

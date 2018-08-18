@@ -1,20 +1,1 @@
-<?php
-include('config.php');
-function db_connect(){
-	$conn=new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-	if($conn)
-		return $conn;
-	else
-		return false;
-}
-
-function db_result_to_array($result){
-	$res_array = array();
-	
-	for($count=0;$row=$result->fetch_assoc();$count++){
-		$res_array[$count]=$row;
-	}
-	return $res_array;
-}
-?>
-	
+<?phpinclude('config.php');function db_connect(){	$conn=new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);	if($conn)		return $conn;	else		return false;}function db_result_to_array($result){	$res_array = array();		for($count=0;$row=$result->fetch_assoc();$count++){		$res_array[$count]=$row;	}	return $res_array;}function check_input($conn,$value){// 去除斜杠if (get_magic_quotes_gpc())  {  $value = stripslashes($value);  }// 如果不是数字则加引号if (!is_numeric($value))  {  $value = mysqli_real_escape_string($conn,$value);  }return $value;}?>	

@@ -9,16 +9,14 @@ if(!isset($_SESSION['user'])){
 }
 
 $conn=db_connect();
-if(!$conn)
-echo '数据库未连接';
 
 if(isset($_POST['isbn'])&&isset($_POST['title'])&&isset($_POST['author'])&&isset($_POST['price'])&&isset($_POST['description'])){
-	$isbn=$_POST['isbn'];
-	$title=$_POST['title'];
-	$author=$_POST['author'];
-	$catid=$_POST['catid'];
-	$price=$_POST['price'];
-	$description=$_POST['description'];
+	$isbn=check_input($conn,$_POST['isbn']);
+	$title=check_input($conn,$_POST['title']);
+	$author=check_input($conn,$_POST['author']);
+	$catid=check_input($conn,$_POST['catid']);
+	$price=check_input($conn,$_POST['price']);
+	$description=check_input($conn,$_POST['description']);
 	
 	//检查图书是否已经存在
 	$query="select * from books where isbn='".$isbn."'";

@@ -10,8 +10,8 @@ if(!isset($_SESSION['user'])){
 }
 
 if(isset($_POST['category'])){
-	$cat=$_POST['category'];
-	$conn=db_connect();
+	$conn=db_connect();	
+	$cat=check_input($conn,$_POST['category']);
 	if(!$conn)
 	echo '数据库未连接';
 //检查分类是否已经存在

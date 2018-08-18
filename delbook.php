@@ -4,8 +4,8 @@ include_once('output_fns.php');
 session_start();
 do_html_header('删除图书');
 
-$isbn = $_GET['isbn'];
 $conn = db_connect();
+$isbn = check_input($conn,$_GET['isbn']);
 if(!$conn)
 	echo '数据库未连接';
 $query="select * from books where isbn='".$isbn."'";

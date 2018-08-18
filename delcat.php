@@ -10,8 +10,8 @@ if(!isset($_SESSION['user'])){
 	if(!isset($_POST['catid'])){
 		header('location:delcat_form.php');
 	}else{
-		$catid=$_POST['catid'];
 		$conn=db_connect();
+		$catid=check_input($conn,$_POST['catid']);
 		//判断该类别下是否还有书籍
 		$query="select * from books where catid=".$catid;
 		$result=$conn->query($query);
