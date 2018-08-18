@@ -14,21 +14,27 @@ function do_html_header($title){
 	<div width="980" align="center">
 	<h1>Li's Book-Shop</h1>
 	<hr />
-	<a href="index.php">首页</a><br>
+	<a href="index.php">首页</a>
 	<?php
-	if($_SESSION['user']=='admin'){
-		echo $_SESSION['user'];
+	if(!isset($_SESSION['user'])){
+		echo "<a href=admin.php>登录</a>";
+		return;
+	}else{
+		if($_SESSION['user']=='admin'){
+			echo "欢迎回来，".$_SESSION['user'];
 	?>
+	<br>
 	<table bgcolor="#cccccc" border="0" width=980 cellspacing="1">
 	<tr>
 	<td align="center"><a href="addcat.php">添加类别</a></td>
 	<td align="center"><a href="delcat_form.php">删除类别</a></td>
 	<td align="center"><a href="addbook.php">添加图书</a></td>
-	<td align="center"><a href="index.php">删除图书</a></td>
+	<td align="center"><a href="index.php?status=delbook">删除图书</a></td>
 	<td align="center"><a href="logout.php">退出</a></td>
 	</tr>
 	</table>
-	<?php 
+<?php 
+		}
 	}
 }
 function do_html_footer(){

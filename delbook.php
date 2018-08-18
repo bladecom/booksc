@@ -17,7 +17,7 @@ if($result->num_rows==0){
 	$result=$conn->query($query);
 	$query="select * from books where isbn='".$isbn."'";
 	$result=$conn->query($query);
-	if($result->rows>0){
+	if($result->num_rows>0){
 		echo "删除失败。";
 	}else{
 		echo "删除成功。";

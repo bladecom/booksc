@@ -13,7 +13,7 @@ do_html_header('登录');
 </tr>
 <tr>
 <td>密码</td>
-<td><input type="text" name="password"/></td>
+<td><input type="password" name="password"/></td>
 </tr>
 <tr>
 <td colspan="2" align="center">

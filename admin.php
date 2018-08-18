@@ -4,26 +4,16 @@ include_once('output_fns.php');
 session_start();
 
 do_html_header('管理员');
+if(isset($_POST['username'])&&isset($_POST['password'])){
 $username=$_POST['username'];
 $password=$_POST['password'];
 $conn=db_connect();
-if(!$conn)
-	echo '数据库未连接';
 $query="select * from admin where username='".$username."' and password='".sha1($password)."'";
 $result=$conn->query($query);
 if($result->num_rows>0){
 	$_SESSION['user']=$username;
-	echo '欢迎回来'.$_SESSION['user'].'<br>';
-	?>
-	<table bgcolor="#cccccc" border="0" width=980 cellspacing="1">
-	<tr>
-	<td align="center"><a href="addcat.php">添加类别</a></td>
-	<td align="center"><a href="delcat.php">删除类别</a></td>
-	<td align="center"><a href="addbook.php">添加图书</a></td>
-	<td align="center"><a href="index.php">删除图书</a></td>
-	</tr>
-	</table>
-	<?php
+	header("location:index.php");
+}
 }
 else{
 	?>

@@ -8,13 +8,23 @@ if(!isset($_SESSION['user'])){
 	header('location:admin.php');
 }else{
 	if(!isset($_POST['catid'])){
-		header(location:'delcat_form.php');
+		header('location:delcat_form.php');
 	}else{
 		$catid=$_POST['catid'];
 		$conn=db_connect();
+		//判断该类别下是否还有书籍
+		$query="select * from books where catid=".$catid;
+		$result=$conn->query($query);
+		if($result->num_rows>0){
+			echo "该类别下还有书籍";
+			header("location:delcat_form.php?status=fail");
+			return;
+		}
+		//删除类别
 		$query="delete from categories where catid='".$catid."'";
 		$result=$conn->query($query);
-		$query="select * from categories";
+		//判断类别是否删除
+		$query="select * from categories where catid=".$catid;
 		$result=$conn->query($query);
 		if($result->num_rows==0){
 			echo "删除类别成功";

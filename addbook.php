@@ -63,7 +63,7 @@ if(isset($_POST['isbn'])&&isset($_POST['title'])&&isset($_POST['author'])&&isset
 <?php
 foreach($cat_array as $row){
 ?>
-<option value="<?php echo $row[catid]; ?>"><?php echo $row[catname]?></option>
+<option value="<?php echo $row['catid']; ?>"><?php echo $row['catname']?></option>
 <?php
 }
 ?>
