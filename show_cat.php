@@ -14,15 +14,9 @@ $books=db_result_to_array($result);
 	<tr>
 	<td width=50>图书编号</td>
 	<td width=350>书名</td>
-	<td width=300>作者</td>
+	<td width=200>作者</td>
 	<td width=30>价格</td>	
-	<?php	
-	if(isset($_SESSION['user'])){
-	?>		
-	<td width=30>操作</td>	
-	<?php	
-	}	
-	?>
+	<td width=80>操作</td>	
 	</tr>
 <?php
 foreach($books as $row){
@@ -37,6 +31,10 @@ foreach($books as $row){
 	if(isset($_SESSION['user'])){
 	?>		
 	<td width=30><a href="delbook.php?isbn=<?php echo $row['isbn'];?>">删除</a></td>	
+	<?php	
+	}else{	
+	?>
+	<td width=30><a href="addtocart.php?isbn=<?php echo $row['isbn'];?>">添加至购物车</a></td>
 	<?php	
 	}	
 	?>

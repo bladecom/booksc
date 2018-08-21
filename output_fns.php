@@ -18,6 +18,7 @@ function do_html_header($title){
 	<?php
 	if(!isset($_SESSION['user'])){
 		echo "<a href=admin.php>登录</a>";
+		echo "<a href=clear_cart.php>清空</a>";
 		return;
 	}else{
 		if($_SESSION['user']=='admin'){
