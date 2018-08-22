@@ -17,8 +17,12 @@ function do_html_header($title){
 	<a href="index.php">首页</a>
 	<?php
 	if(!isset($_SESSION['user'])){
-		echo "<a href=admin.php>登录</a>";
-		echo "<a href=clear_cart.php>清空</a>";
+		echo "<a href='admin.php'>登录</a>";
+		echo "  ";
+		echo "<a href='clear_cart.php'>清空</a>";
+		if(isset($_SESSION['cart'])){
+		echo "  <a href='show_cart.php'>查看购物车</a>";
+	}
 		return;
 	}else{
 		if($_SESSION['user']=='admin'){
@@ -38,6 +42,7 @@ function do_html_header($title){
 		}
 	}
 }
+
 function do_html_footer(){
   // print an HTML footer
 ?>
